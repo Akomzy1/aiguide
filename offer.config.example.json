@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "mode": "preview",
+  "currency": "NGN",
+  "seller": {
+    "displayName": null,
+    "supportEmail": null
+  },
+  "site": {
+    "publicUrl": null,
+    "privacyUrl": null,
+    "termsUrl": null
+  },
+  "main": {
+    "title": "Practical AI for Nigerian Small Businesses",
+    "format": "PDF",
+    "pages": 44,
+    "price": null,
+    "checkoutUrl": null,
+    "cover": "assets/covers/main-guide.webp",
+    "includedBonusId": "business-content-planner",
+    "deliveryDescription": null,
+    "refundTerms": null
+  },
+  "bonus": {
+    "id": "business-content-planner",
+    "title": "Business & Content Planner",
+    "format": "Fillable and printable PDF",
+    "pages": 8,
+    "price": 0,
+    "cover": "assets/covers/free-planner.webp",
+    "requiresCompatiblePdfReader": true
+  },
+  "upsell": {
+    "enabled": false,
+    "title": "The 30-Day Content Campaign",
+    "format": "PDF",
+    "pages": 21,
+    "price": null,
+    "checkoutUrl": null,
+    "cover": "assets/covers/campaign-companion.webp",
+    "includedWithMain": false,
+    "deliveryDescription": null,
+    "refundTerms": null
+  },
+  "tracking": {
+    "enabled": false,
+    "metaPixelId": null,
+    "analyticsId": null,
+    "consentApproach": null
+  }
+}

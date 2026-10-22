@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "mode": "preview",
+  "currency": "NGN",
+  "seller": { "displayName": null, "supportEmail": null },
+  "site": { "publicUrl": null, "privacyUrl": null, "termsUrl": null },
+  "main": {
+    "title": "Practical AI for Nigerian Small Businesses",
+    "format": "PDF",
+    "pages": 44,
+    "price": 4900,
+    "checkoutUrl": null,
+    "cover": "assets/covers/main-guide.webp",
+    "includedBonusId": "business-content-planner",
+    "deliveryDescription": null,
+    "refundTerms": null
+  },
+  "bonus": {
+    "id": "business-content-planner",
+    "title": "Business & Content Planner",
+    "format": "Fillable and printable PDF",
+    "pages": 8,
+    "price": 0,
+    "cover": "assets/covers/free-planner.webp",
+    "requiresCompatiblePdfReader": true
+  },
+  "upsell": {
+    "enabled": true,
+    "title": "The 30-Day Content Campaign",
+    "format": "PDF",
+    "pages": 21,
+    "price": 2900,
+    "checkoutUrl": null,
+    "cover": "assets/covers/campaign-companion.webp",
+    "includedWithMain": false,
+    "deliveryDescription": null,
+    "refundTerms": null
+  },
+  "tracking": { "enabled": false, "metaPixelId": null, "analyticsId": null, "consentApproach": null },
+  "copy": {
+    "metaDescription": "A practical, 44-page illustrated AI guide for Nigerian small-business owners. Explore real sample pages, reusable prompts and the included free business planner.",
+    "hero": {
+      "eyebrow": "A practical guide for Nigerian small businesses",
+      "headline": "Less blank-page thinking.",
+      "accent": "More getting things done.",
+      "description": "Put AI to work in your business. Write better content, create clearer graphics and plan short videos—with examples you can make your own.",
+      "audience": "Made for the work behind your business.",
+      "format": "44-page illustrated PDF + free fillable planner"
+    },
+    "sectors": ["Food & hospitality", "Retail & fashion", "Beauty & wellness", "Services & freelance"],
+    "outcomes": {
+      "eyebrow": "Less theory. More useful work.",
+      "heading": "Start with the task already on your list.",
+      "intro": "A menu to post. A product to explain. A customer to reply to. Learn a practical way to turn your business details into something you can review, refine and use.",
+      "items": [
+        { "title": "Find the right words.", "text": "Turn a clear business brief into captions, product descriptions and thoughtful customer replies.", "example": "For the food vendor with a menu to share.", "icon": "pen" },
+        { "title": "Make your message visual.", "text": "Learn image prompting, flyer layout and simple carousels that put the important details first.", "example": "For the retailer with a product to introduce.", "icon": "layout" },
+        { "title": "Give your video an idea.", "text": "Plan scenes and storyboards, then write a focused prompt with guidance on Google Flow.", "example": "For the beauty professional explaining a service.", "icon": "play" },
+        { "title": "Bring order to the everyday.", "text": "Draft proposals, organise information and build a content routine you can come back to.", "example": "For the freelancer preparing the next proposal.", "icon": "check" }
+      ]
+    },
+    "previews": {
+      "eyebrow": "A few pages, before you decide",
+      "heading": "Good guidance. See for yourself.",
+      "intro": "Real pages from the guide. Worked examples, clear explanations and visual steps—not just a list of tools.",
+      "items": [
+        { "page": "08", "category": "Business writing", "title": "A caption, worked through.", "description": "See how a better business brief becomes clearer content.", "src": "assets/previews/page-08-caption.webp", "alt": "Sample page 8 showing a weak prompt, an improved bakery prompt and a worked caption." },
+        { "page": "22", "category": "Graphics & layout", "title": "From busy to clearer.", "description": "Compare flyer layouts and the choices behind a more readable graphic.", "src": "assets/previews/page-22-graphics.webp", "alt": "Sample page 22 comparing a busy flyer with a clearer layout for a fictional cupcake offer." },
+        { "page": "27", "category": "Short-video guidance", "title": "The Flow workflow.", "description": "A simplified teaching diagram and practical steps. Menus and features may change.", "src": "assets/previews/page-27-flow.webp", "alt": "Sample page 27 showing a simplified Flow workspace diagram and numbered video-creation steps." }
+      ]
+    },
+    "contents": {
+      "eyebrow": "Inside the 44-page guide",
+      "heading": "A little structure. A lot to put into practice.",
+      "intro": "Start with the chapter you need today. Return to the prompts and examples when the next task comes along.",
+      "items": [
+        { "title": "Better briefs & prompts", "description": "Give the tool useful context, ask for a clear output and refine the result." },
+        { "title": "Writing for your business", "description": "Captions, product descriptions and customer replies that fit the task." },
+        { "title": "Graphics & images", "description": "Image prompts, visual hierarchy, Canva, flyers and carousel planning." },
+        { "title": "Short-video planning", "description": "Scene ideas, storyboards, focused prompts and a Google Flow workflow." },
+        { "title": "The everyday business work", "description": "Proposals, information and a practical weekly content routine." },
+        { "title": "Practice, then make it yours", "description": "A seven-day practice plan and a prompt library to keep adapting." }
+      ]
+    },
+    "planner": {
+      "eyebrow": "Your next step, included",
+      "heading": "Give your ideas somewhere to go.",
+      "description": "The free 8-page Business & Content Planner takes you from reading to doing. Capture your business brief, organise your ideas and plan what comes next.",
+      "items": ["Put your business details in one place.", "Plan graphics, video ideas and useful content.", "Record what you made and what to review."],
+      "note": "Fill it in with a compatible PDF reader, or print it and write by hand. Save and reopen a test entry to check your reader retains the fields."
+    },
+    "offer": {
+      "eyebrow": "Two PDFs. One practical starting point.",
+      "heading": "Your next useful task starts here.",
+      "description": "A clear guide to learn from. A planner to put it into practice. Built around the content and everyday work your business needs.",
+      "unavailable": "Checkout is not open yet.",
+      "previewNote": "In the meantime, take a look at the sample pages and explore what’s included.",
+      "paymentNote": "One-time payment.",
+      "digitalNote": "Digital download. No physical book is shipped."
+    },
+    "companion": {
+      "label": "Optional upgrade · Sold separately",
+      "eyebrow": "For when you want to plan further",
+      "heading": "From one useful task to a month of content.",
+      "description": "The 30-Day Content Campaign is a 21-page companion for planning the month, producing your assets, handing work over and reviewing what worked.",
+      "note": "An optional, separate purchase. The main guide is useful on its own."
+    },
+    "faqs": [
+      { "question": "I’m new to AI. Is this for me?", "answer": "Yes. The guide explains practical tasks through prompts, worked examples and visual guidance. Start with one task and build from there; you do not need technical jargon to begin." },
+      { "question": "Will this work for my type of business?", "answer": "The examples cover food, retail, beauty, services, freelance work and other small businesses. You can adapt the briefs and prompts to your own offer and customers." },
+      { "question": "Can I read it on my phone?", "answer": "You can read the PDF in a suitable reader on your phone. A larger screen may be more comfortable for design and video tasks. Fillable-planner support depends on your PDF reader; save and reopen a test entry first." },
+      { "question": "Do I need paid AI tools?", "answer": "The guide includes ways to start with free access where available. Features, credits and limits vary by tool and can change. Buying the PDF does not include a paid software subscription." },
+      { "question": "Does it include graphics and video lessons?", "answer": "It covers image prompting, graphic layout and Canva, plus storyboarding and Google Flow video guidance. This is an illustrated PDF guide, not a collection of video lessons. Visuals include worked examples and simplified teaching diagrams." },
+      { "question": "Is the campaign companion included?", "answer": "The main purchase includes the 44-page guide and the free 8-page planner. The 21-page 30-Day Content Campaign companion is an optional separate purchase." }
+    ],
+    "final": {
+      "heading": "Your business. Your ideas. A clearer place to start.",
+      "description": "Start with a clear brief, follow an example and make your next piece of content more useful."
+    },
+    "footerNote": "Independent educational guide. Third-party tools and their features may change."
+  }
+}
