@@ -15,3 +15,7 @@ Validation: meaningful Node tests for incomplete/valid offers, unsafe URLs and i
 ## Pricing update
 
 Owner approved NGN 4,900 for the main guide and corrected the companion price to NGN 2,900. Preserve the current layout and visual system. Store both amounts in the existing offer config; display confirmed prices independently from checkout readiness. Main offer includes the 44-page guide and FREE 8-page planner, with one-time payment and digital-download wording. The 21-page companion is a separate optional upgrade. All main CTAs share the main price; unavailable checkout buttons have no destination. Retain URL fields unchanged and do not publish. Verify price consistency, existing live URL handling and responsive button fit.
+
+## Main checkout connection
+
+The owner subsequently supplied the Selar URL and clarified that the companion is an upsell in that same checkout. Verify the main listing and NGN price, connect all four main CTAs and the companion CTA to the exact supplied URL, and record the seller name shown there. Store the URL once under `main.checkoutUrl` and let `upsell.checkoutMode: "main"` reuse it. Label the companion as an optional paid checkout upgrade, excluded from the base price. Distinguish checkout navigation from full publication readiness (support, delivery, refunds and policies). Keep preview indexing protections. Do not invent commercial details, purchase anything or publish.

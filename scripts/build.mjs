@@ -30,7 +30,7 @@ export async function build() {
   await cp(path.join(root, 'design', 'style-tile.html'), path.join(out, 'design', 'style-tile.html'));
   // Robots remains private-preview-friendly until the commercial offer and URL are supplied.
   await writeFile(path.join(out, 'robots.txt'), state.mainReady && httpsUrl(config.site.publicUrl) ? 'User-agent: *\nAllow: /\n' : 'User-agent: *\nDisallow: /\n');
-  console.log(`Built dist/index.html · ${state.mainReady ? 'live offer' : 'preview'} · companion ${state.upsellReady ? 'available' : 'information only'}`);
+  console.log(`Built dist/index.html · ${state.mainReady ? 'live offer' : 'preview'} · companion ${state.upsellCheckoutReady ? 'checkout connected' : 'information only'}`);
   return { config, state };
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await build();

@@ -2,14 +2,14 @@
   "schemaVersion": 1,
   "mode": "preview",
   "currency": "NGN",
-  "seller": { "displayName": null, "supportEmail": null },
+  "seller": { "displayName": "Tokunbo Akomolede", "supportEmail": null },
   "site": { "publicUrl": null, "privacyUrl": null, "termsUrl": null },
   "main": {
     "title": "Practical AI for Nigerian Small Businesses",
     "format": "PDF",
     "pages": 44,
     "price": 4900,
-    "checkoutUrl": null,
+    "checkoutUrl": "https://selar.com/1h92g1w281",
     "cover": "assets/covers/main-guide.webp",
     "includedBonusId": "business-content-planner",
     "deliveryDescription": null,
@@ -26,11 +26,11 @@
   },
   "upsell": {
     "enabled": true,
+    "checkoutMode": "main",
     "title": "The 30-Day Content Campaign",
     "format": "PDF",
     "pages": 21,
     "price": 2900,
-    "checkoutUrl": null,
     "cover": "assets/covers/campaign-companion.webp",
     "includedWithMain": false,
     "deliveryDescription": null,
@@ -99,11 +99,12 @@
       "digitalNote": "Digital download. No physical book is shipped."
     },
     "companion": {
-      "label": "Optional upgrade · Sold separately",
+      "label": "Optional upgrade · Add at checkout",
+      "cta": "Add the companion at checkout",
       "eyebrow": "For when you want to plan further",
       "heading": "From one useful task to a month of content.",
       "description": "The 30-Day Content Campaign is a 21-page companion for planning the month, producing your assets, handing work over and reviewing what worked.",
-      "note": "An optional, separate purchase. The main guide is useful on its own."
+      "note": "An optional paid add-on in the same Selar checkout. Not included in the main guide price. The main guide is useful on its own."
     },
     "faqs": [
       { "question": "I’m new to AI. Is this for me?", "answer": "Yes. The guide explains practical tasks through prompts, worked examples and visual guidance. Start with one task and build from there; you do not need technical jargon to begin." },
@@ -111,7 +112,7 @@
       { "question": "Can I read it on my phone?", "answer": "You can read the PDF in a suitable reader on your phone. A larger screen may be more comfortable for design and video tasks. Fillable-planner support depends on your PDF reader; save and reopen a test entry first." },
       { "question": "Do I need paid AI tools?", "answer": "The guide includes ways to start with free access where available. Features, credits and limits vary by tool and can change. Buying the PDF does not include a paid software subscription." },
       { "question": "Does it include graphics and video lessons?", "answer": "It covers image prompting, graphic layout and Canva, plus storyboarding and Google Flow video guidance. This is an illustrated PDF guide, not a collection of video lessons. Visuals include worked examples and simplified teaching diagrams." },
-      { "question": "Is the campaign companion included?", "answer": "The main purchase includes the 44-page guide and the free 8-page planner. The 21-page 30-Day Content Campaign companion is an optional separate purchase." }
+      { "question": "Is the campaign companion included?", "answer": "The main purchase includes the 44-page guide and the free 8-page planner. The 21-page 30-Day Content Campaign companion is an optional paid upgrade offered in the same Selar checkout; it is not included in the main guide price." }
     ],
     "final": {
       "heading": "Your business. Your ideas. A clearer place to start.",

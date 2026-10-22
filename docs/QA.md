@@ -1,5 +1,20 @@
 # QA — 22 October 2026
 
+## Vercel build configuration
+
+The supplied Vercel log built commit `e27d3c6` successfully but then failed with `STATIC_BUILD_NO_OUT_DIR` because it expected `public/`. Added root `vercel.json` with `framework: null`, `buildCommand: "npm run build"`, and `outputDirectory: "dist"`. Pinned `engines.node` to `24.x` to avoid an automatic upgrade to a future major version. Local production build and all 11 tests passed; the configured output directory contains `index.html`. Hosted deployment success must be checked on the new Vercel build; local validation does not certify it. The npm `cache-dir` warning in the supplied log was not the build failure.
+
+## Single checkout connection — latest
+
+- Owner supplied `https://selar.com/1h92g1w281` and clarified that the companion is upsold within the same checkout. The URL is stored once under `main.checkoutUrl`; `upsell.checkoutMode: "main"` reuses it.
+- Verified the public Selar listing (HTTP 200), title, seller Tokunbo Akomolede and stated inclusion of the 44-page main guide plus free 8-page planner. Reading the same page with `?currency=NGN` showed **₦4,900.00**, matching the approved main price. The exact original URL is used for the buttons. The listing's crossed-out price was not added to the landing page.
+- The companion remains **₦2,900**, labelled an optional paid upgrade excluded from the guide price. Its CTA is “Add the companion at checkout.” Its actual checkout-flow upsell price has not been independently verified; no purchase or Selar settings change was made.
+- Build and **11 tests passed**. Coverage includes shared-checkout reuse, separate product prices, blocking unsafe/missing destinations and keeping launch validation separate from preview checkout navigation.
+- Chrome passed all six viewport checks (320, 360, 390, 768 and 1440px plus short landscape). All four main CTAs and the companion CTA resolved to the exact same supplied URL. Neither purchase button is disabled. No page/button overflow, broken images, runtime errors or failed resources were reported. Existing interaction checks passed. Computed contrast: 157 visible text nodes, no failures.
+- Local mobile initial transfer: 174,741 bytes. Preview remains noindex and unpublished; support, delivery/refund and policy details remain launch dependencies. Current evidence is in `.preview/browser-qa.json` and the pricing screenshots.
+
+The sections below retain the earlier build and pricing verification history.
+
 ## Pricing revision
 
 Owner approved **₦4,900** for the main guide and **₦2,900** for the optional companion. Both are in `offer.config.json`. The updated build and all **9 tests passed**, including new tests for displaying confirmed prices without checkout URLs and for keeping every live CTA's amount and original product URL consistent.

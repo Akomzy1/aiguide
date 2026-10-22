@@ -9,6 +9,7 @@ function liveFixture() {
   const result = structuredClone(config);
   result.mode = 'live';
   result.upsell.enabled = false;
+  result.upsell.checkoutMode = 'separate';
   result.upsell.price = null;
   result.seller = { displayName: 'Test seller', supportEmail: 'support@example.test' };
   result.site.privacyUrl = 'https://example.test/privacy';
@@ -34,7 +35,7 @@ test('unconfigured preview has working section links and no purchase destination
   assert.match(html, /name="robots" content="noindex, nofollow"/);
 });
 
-test('launch intent alone cannot activate checkout', () => {
+test('launch intent alone cannot satisfy launch validation', () => {
   const live = liveFixture();
   for (const field of ['price', 'checkoutUrl', 'deliveryDescription', 'refundTerms']) {
     const incomplete = structuredClone(live);
@@ -50,6 +51,34 @@ test('launch intent alone cannot activate checkout', () => {
     const incomplete = structuredClone(live);
     incomplete.site[field] = null;
     assert.equal(offerState(incomplete).mainReady, false, field);
+  }
+});
+
+test('supplied checkout can be linked in preview without bypassing launch validation', () => {
+  const preview = structuredClone(config);
+  preview.mode = 'preview';
+  preview.main.price = 4900;
+  preview.main.checkoutUrl = 'https://example.test/approved-main';
+  preview.main.deliveryDescription = null;
+  preview.main.refundTerms = null;
+  preview.seller.supportEmail = null;
+  preview.site.privacyUrl = null;
+  preview.site.termsUrl = null;
+  preview.upsell.checkoutUrl = null;
+  preview.upsell.checkoutMode = 'separate';
+  const state = offerState(preview);
+  assert.equal(state.mainCheckoutReady, true);
+  assert.equal(state.mainReady, false);
+  assert.equal(state.upsellCheckoutReady, false);
+  const html = render(preview);
+  assert.equal((html.match(/href="https:\/\/example.test\/approved-main"/g) || []).length, 4);
+  assert.match(html, /name="robots" content="noindex, nofollow"/);
+  assert.doesNotMatch(html, /id="main-checkout-status"|<p class="small-note"><\/p>/);
+  assert.match(html, /disabled aria-describedby="upsell-checkout-status"/);
+  for (const url of [null, '#', 'http://example.test', 'javascript:alert(1)']) {
+    preview.main.checkoutUrl = url;
+    assert.equal(offerState(preview).mainCheckoutReady, false);
+    assert.match(render(preview), /disabled aria-describedby="main-checkout-status"/);
   }
 });
 
@@ -71,7 +100,7 @@ test('companion needs its own complete offer and never replaces main checkout', 
   assert.equal(offerState(live).upsellReady, true);
   const html = render(live);
   assert.equal((html.match(/href="https:\/\/example.test\/companion"/g) || []).length, 1);
-  assert.match(html, /Optional upgrade · Sold separately/);
+  assert.match(html, /Optional upgrade/);
   live.upsell.includedWithMain = true;
   assert.equal(offerState(live).upsellReady, false);
 });
@@ -139,4 +168,32 @@ test('live CTAs use the same configured amount and retain each checkout URL', ()
   assert.doesNotMatch(html, /disabled aria-describedby=/);
   assert.equal(money(4900), '₦4,900');
   assert.equal(money(4900.25), '₦4,900.25');
+});
+
+test('checkout upsell reuses the main URL and keeps the add-on price separate', () => {
+  const shared = structuredClone(config);
+  shared.mode = 'preview';
+  shared.main.price = 4900;
+  shared.main.checkoutUrl = 'https://example.test/shared-checkout';
+  shared.upsell.enabled = true;
+  shared.upsell.checkoutMode = 'main';
+  shared.upsell.price = 2900;
+  shared.upsell.checkoutUrl = null;
+  const state = offerState(shared);
+  assert.equal(state.upsellCheckoutReady, true);
+  assert.equal(state.upsellCheckoutUrl, shared.main.checkoutUrl);
+  const html = render(shared);
+  assert.equal((html.match(/href="https:\/\/example.test\/shared-checkout"/g) || []).length, 5);
+  assert.match(html, /data-price="main">₦4,900/);
+  assert.match(html, /data-price="upsell">₦2,900/);
+  assert.match(html, /Add the companion at checkout/);
+  assert.doesNotMatch(html, /id="upsell-checkout-status"/);
+  shared.main.checkoutUrl = null;
+  assert.equal(offerState(shared).upsellCheckoutReady, false);
+  shared.main.checkoutUrl = 'https://example.test/shared-checkout';
+  shared.main.price = null;
+  assert.equal(offerState(shared).upsellCheckoutReady, false);
+  shared.main.price = 4900;
+  shared.upsell.enabled = false;
+  assert.equal(offerState(shared).upsellCheckoutReady, false);
 });

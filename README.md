@@ -4,7 +4,7 @@ A responsive, dependency-free sales page for **Practical AI for Nigerian Small B
 
 ## Run locally
 
-Requires Node.js 24 or newer. No package installation is needed.
+Uses Node.js 24.x. No package installation is needed.
 
 ```powershell
 npm.cmd run dev
@@ -17,7 +17,7 @@ npm.cmd run build
 npm.cmd test
 ```
 
-The production site is generated in `dist/`. Serve this directory only. The page is local and has not been deployed.
+The production site is generated in `dist/`. Serve this directory only. `vercel.json` sets the Vercel framework to Other, runs `npm run build`, and serves `dist/`; it overrides an incorrect `public` output-directory setting. Node is pinned to the 24.x major release. A successful local build does not verify a hosted deployment.
 
 ## Edit
 
@@ -31,6 +31,6 @@ The production site is generated in `dist/`. Serve this directory only. The page
 | `assets/` | Exact covers, real sample pages and illustrative editorial image |
 | `references/` | Original factual brief, draft copy and asset provenance |
 
-The default is `mode: "preview"`; no price or checkout is invented. The live build fails if the main offer is incomplete. A companion checkout is shown only when its own offer is complete and enabled. Approved local policy pages can be placed under `src/` and configured with paths such as `/privacy.html`.
+The default is `mode: "preview"`; no price or checkout is invented. The owner's Selar checkout is connected and its ₦4,900 main-guide price is verified. The companion is an optional ₦2,900 upsell in that same checkout (`upsell.checkoutMode: "main"`); both offers use the single URL in `main.checkoutUrl`. Supplied HTTPS checkout links and confirmed prices can work in local preview while launch validation remains incomplete. The live build still fails if required support, delivery/refund or policy details are missing. Approved local policy pages can be placed under `src/` and configured with paths such as `/privacy.html`.
 
 See [handoff](docs/HANDOFF.md), [QA evidence](docs/QA.md) and [launch checklist](docs/LAUNCH_CHECKLIST.md). Keep paid PDFs outside the repository's public build. Original PNG masters and the starter ZIP are not included in `dist/`.

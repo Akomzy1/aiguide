@@ -83,12 +83,16 @@ try {
       upsell:document.querySelector('[data-price="upsell"]')?.firstChild.textContent,
       disabledMain:!!document.querySelector('.offer-checkout button:disabled'),
       disabledUpsell:!!document.querySelector('.companion-action button:disabled'),
+      mainLinks:[...document.querySelectorAll('.site-header a.button,.hero-actions a.button,.offer-checkout a.button,.final-inner a.button')].map(el=>el.getAttribute('href')),
+      upsellLink:document.querySelector('.companion-action a.button')?.getAttribute('href'),
       overflowingButtons:[...document.querySelectorAll('.button')].filter(el=>el.getClientRects().length && el.scrollWidth>el.clientWidth+1).map(el=>el.textContent.trim())
     }))()`);
     if (offers.mainPriced) assert.equal(pricing.main, money(config.main.price, config.currency));
     if (offers.upsellPriced) assert.equal(pricing.upsell, money(config.upsell.price, config.currency));
-    assert.equal(pricing.disabledMain, offers.mainPriced && !offers.mainReady);
-    assert.equal(pricing.disabledUpsell, offers.upsellPriced && !offers.upsellReady);
+    assert.equal(pricing.disabledMain, offers.mainPriced && !offers.mainCheckoutReady);
+    assert.equal(pricing.disabledUpsell, offers.upsellPriced && !offers.upsellCheckoutReady);
+    if (offers.mainCheckoutReady) assert.deepEqual(pricing.mainLinks, Array(4).fill(config.main.checkoutUrl));
+    if (offers.upsellCheckoutReady) assert.equal(pricing.upsellLink, offers.upsellCheckoutUrl);
     assert.deepEqual(pricing.overflowingButtons, []);
     measurement.pricing = pricing;
     if ([320,390,1440].includes(width)) {

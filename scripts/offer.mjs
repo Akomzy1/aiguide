@@ -30,12 +30,20 @@ export function offerState(config) {
     return missing;
   };
   const mainMissing = validateProduct(config.main);
-  const upsellMissing = validateProduct(config.upsell);
+  const upsellUsesMainCheckout = config.upsell?.checkoutMode === 'main';
+  const upsellCheckoutUrl = upsellUsesMainCheckout ? config.main?.checkoutUrl : config.upsell?.checkoutUrl;
+  const upsellMissing = validateProduct({ ...config.upsell, checkoutUrl: upsellCheckoutUrl });
   if (!config.upsell?.enabled) upsellMissing.push('enabled');
   if (config.upsell?.includedWithMain !== false) upsellMissing.push('includedWithMain');
+  const mainPriced = config.currency === 'NGN' && validPrice(config.main?.price);
+  const upsellPriced = config.currency === 'NGN' && config.upsell?.enabled === true && validPrice(config.upsell?.price);
+  const mainCheckoutReady = mainPriced && httpsUrl(config.main?.checkoutUrl);
+  if (upsellUsesMainCheckout && !mainPriced) upsellMissing.push('main.price');
   return {
-    mainPriced: config.currency === 'NGN' && validPrice(config.main?.price),
-    upsellPriced: config.currency === 'NGN' && config.upsell?.enabled === true && validPrice(config.upsell?.price),
+    mainPriced, upsellPriced, upsellUsesMainCheckout, upsellCheckoutUrl,
+    // A supplied checkout may be linked in the local preview without claiming launch readiness.
+    mainCheckoutReady,
+    upsellCheckoutReady: upsellPriced && config.upsell?.includedWithMain === false && (upsellUsesMainCheckout ? mainCheckoutReady : httpsUrl(upsellCheckoutUrl)),
     mainReady: mainMissing.length === 0, upsellReady: upsellMissing.length === 0, mainMissing, upsellMissing
   };
 }
